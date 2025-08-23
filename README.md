@@ -63,6 +63,7 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 
 * **Gráficas de Entrenamiento:** Se incluyen gráficas en el notebook que muestran el rendimiento a lo largo de las épocas, evidenciando un rendimiento sólido.
+  
   <img width="502" height="547" alt="image" src="https://github.com/user-attachments/assets/3e0511c9-dcda-45f3-82e9-0a06730d1733" />
   <img width="349" height="455" alt="image" src="https://github.com/user-attachments/assets/43344909-1ec9-4a01-a2b7-37e81d73f6a9" />
 
