@@ -69,8 +69,11 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 
 * **Matriz de Confusión:** El modelo mostró un rendimiento equilibrado, con un bajo número de errores tanto para perros como para gatos.
+  
 <img width="658" height="547" alt="image" src="https://github.com/user-attachments/assets/28f0fbaa-3083-425c-abf9-69eee3f97f1c" />
+
 * **Distribuccion de Probabilidades de Prediccion**
+
   <img width="841" height="547" alt="image" src="https://github.com/user-attachments/assets/82e9b24a-8aea-4219-90a6-0d1d01f89fe0" />
 
 
