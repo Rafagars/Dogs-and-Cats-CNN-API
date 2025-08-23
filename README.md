@@ -1,8 +1,5 @@
 # 🐶 Clasificador de Perros y Gatos con API en Flask 🐱
 
-![Banner del proyecto](https://www.ejemplo.com/tu-imagen-de-banner.jpg)  
-*(Opcional: puedes crear un banner simple con el nombre del proyecto o usar una imagen representativa)*
-
 ## 📝 Resumen del Proyecto
 
 Este proyecto es una demostración completa del ciclo de vida de un modelo de Machine Learning, desde su creación y entrenamiento hasta su despliegue como una **API web funcional**. El objetivo es clasificar imágenes como "perro" o "gato" utilizando una **Red Neuronal Convolucional (CNN)**.
@@ -66,8 +63,15 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 
 * **Gráficas de Entrenamiento:** Se incluyen gráficas en el notebook que muestran el rendimiento a lo largo de las épocas, evidenciando un rendimiento sólido.
+  <img width="502" height="547" alt="image" src="https://github.com/user-attachments/assets/3e0511c9-dcda-45f3-82e9-0a06730d1733" />
+  <img width="349" height="455" alt="image" src="https://github.com/user-attachments/assets/43344909-1ec9-4a01-a2b7-37e81d73f6a9" />
+
 
 * **Matriz de Confusión:** El modelo mostró un rendimiento equilibrado, con un bajo número de errores tanto para perros como para gatos.
+<img width="658" height="547" alt="image" src="https://github.com/user-attachments/assets/28f0fbaa-3083-425c-abf9-69eee3f97f1c" />
+* **Distribuccion de Probabilidades de Prediccion**
+  <img width="841" height="547" alt="image" src="https://github.com/user-attachments/assets/82e9b24a-8aea-4219-90a6-0d1d01f89fe0" />
+
 
 ## ✍️ Autor
 
