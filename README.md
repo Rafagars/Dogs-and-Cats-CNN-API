@@ -39,8 +39,8 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 1.  **Clona el repositorio:**
     ```bash
-    git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/tu-usuario/nombre-del-repo.git)
-    cd nombre-del-repo
+    git clone [https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/tu-usuario/nombre-del-repo.git](https://github.com/Rafagars/Dogs-and-Cats-CNN-API.git)
+    cd Dogs-and-Cats-CNN-API
     ```
 
 2.  **Instala las dependencias:**
