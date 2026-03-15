@@ -8,5 +8,4 @@ numpy
 matplotlib
 scikit-learn
 pandas
-gunicorn
 Pillow
