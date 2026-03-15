@@ -50,13 +50,13 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 3.  **Ejecuta la API:**
     ```bash
-    flask run
+    gunicorn app.main:app --reload
     ```
-    La API estará disponible en `http://127.0.0.1:5000` (o el puerto que configure Flask).
+    La API estará disponible en `http://127.0.0.1:8000`.
 
 4.  **Haz una predicción (ejemplo con `curl`):**
     ```bash
-    curl -X POST -F "file=@/ruta/a/tu/imagen.jpg" [http://127.0.0.1:5000/predict](http://127.0.0.1:5000/predict)
+    curl -X POST -F "file=@/ruta/a/tu/imagen.jpg" [http://127.0.0.1:5000/predict](http://127.0.0.1:8000/predict)
     ```
 
 ## 📊 Resultados de la Evaluación
