@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clasificador Perro vs Gato</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center font-sans">
+
+    <div class="bg-white p-8 rounded-2xl shadow-xl w-full max-w-md text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">🐶 vs 🐱</h1>
+        <p class="text-gray-500 mb-6 text-sm">Sube una imagen para identificar al intruso</p>
+
+        <form id="upload-form" class="space-y-4">
+            <div class="flex items-center justify-center w-full">
+                <label class="flex flex-col w-full h-32 border-4 border-dashed border-blue-200 hover:bg-gray-50 hover:border-blue-300 transition-colors cursor-pointer rounded-xl">
+                    <div class="flex flex-col items-center justify-center pt-7">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" />
+                        </svg>
+                        <p id="file-name" class="pt-1 text-sm tracking-wider text-gray-400">Seleccionar imagen</p>
+                    </div>
+                    <input type="file" id="file-input" name="file" class="hidden" accept="image/*" onchange="updateFileName()" />
+                </label>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-xl font-semibold hover:bg-blue-700 transition shadow-lg shadow-blue-200">
+                Analizar Imagen
+            </button>
+        </form>
+
+        <div id="loading" class="hidden mt-6 text-blue-600 font-medium animate-pulse">
+            Procesando... 🚀
+        </div>
+
+        <div id="result-container" class="hidden mt-6 p-4 rounded-xl border-2">
+            <img id="preview-img" src="" alt="Vista previa" class="w-full h-48 object-cover rounded-lg mb-4 shadow-md hidden">
+            
+            <p id="prediction-text" class="text-2xl font-bold"></p>
+            <p id="probability-text" class="text-gray-500 text-sm italic"></p>
+        </div>
+    </div>
+
+    <script>
+        // Actualiza el texto del input cuando seleccionas un archivo
+        function updateFileName() {
+            const input = document.getElementById('file-input');
+            const fileName = document.getElementById('file-name');
+            fileName.textContent = input.files[0] ? input.files[0].name : "Seleccionar imagen";
+        }
+
+        const form = document.getElementById('upload-form');
+        const loading = document.getElementById('loading');
+        const resultContainer = document.getElementById('result-container');
+        const predictionText = document.getElementById('prediction-text');
+        const probabilityText = document.getElementById('probability-text');
+
+        form.onsubmit = async (e) => {
+            e.preventDefault();
+            const fileInput = document.getElementById('file-input');
+            const previewImg = document.getElementById('preview-img'); //La imagen subida
+
+            if (!fileInput.files[0]) return alert("Por favor selecciona una imagen");
+
+            const file = fileInput.files[0];
+            previewImg.src = URL.createObjectURL(file); // Crea una URL temporal del archivo
+            previewImg.classList.remove('hidden'); // La hace visible
+
+            const formData = new FormData();
+            formData.append('file', file);
+
+            // UI feedback
+            loading.classList.remove('hidden');
+            resultContainer.classList.add('hidden');
+
+            try {
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    body: formData
+                });
+                const data = await response.json();
+
+                if (data.error) throw new Error(data.error);
+
+                // Mostrar resultados
+                predictionText.textContent = `¡Es un ${data.prediction}!`;
+                predictionText.className = data.prediction === "Perro" ? "text-2xl font-bold text-blue-600" : "text-2xl font-bold text-red-500";
+                
+                probabilityText.textContent = `Confianza: ${(data.probability * 100).toFixed(2)}%`;
+                
+                resultContainer.className = data.prediction === "Perro" 
+                    ? "mt-6 p-4 rounded-xl border-2 border-blue-100 bg-blue-50 block" 
+                    : "mt-6 p-4 rounded-xl border-2 border-red-100 bg-red-50 block";
+
+            } catch (err) {
+                alert("Error al procesar la imagen: " + err.message);
+            } finally {
+                loading.classList.add('hidden');
+            }
+        };
+    </script>
+</body>
+</html>
