@@ -1,3 +1,50 @@
+
+# 🐶 Dogs and Cats Classifier with Flask API 🐱
+
+## 📝 Project Overview
+This project demonstrates the complete lifecycle of a Machine Learning model, from its design and training to its deployment as a **functional web API**. The objective is to classify images as "dog" or "cat" using a **Convolutional Neural Network (CNN)**.
+
+As an Applied Mathematician, I focused this project on optimizing inference through model quantization (TFLite) and ensuring a robust data preprocessing pipeline to maintain high accuracy in a production-like environment.
+
+---
+
+## ✨ Key Features
+* **CNN Model:** Custom architecture trained to recognize complex patterns in pet imagery.
+* **Data Augmentation:** Implemented techniques to improve model robustness and prevent overfitting.
+* **TFLite Integration:** Model converted to TensorFlow Lite format for optimized, fast inference and a reduced memory footprint.
+* **Security & Cleanliness:** Includes file extension validation and automatic temporary file cleanup to maintain server hygiene.
+* **Responsive UI:** Minimalist frontend built with Tailwind CSS for real-time interaction.
+
+## 🛠️ Tech Stack & Libraries
+* **Python:** Core programming language.
+* **TensorFlow & Keras:** For Deep Learning model development.
+* **Flask & Gunicorn:** For the web server and API creation.
+* **Tailwind CSS:** For a modern, responsive frontend.
+* **NumPy & Scikit-learn:** For data manipulation and evaluation metrics.
+
+---
+
+## 🚀 How to Run the Project
+
+### 1. Clone and Setup
+```bash
+git clone [https://github.com/Rafagars/Dogs-and-Cats-CNN-API.git](https://github.com/Rafagars/Dogs-and-Cats-CNN-API.git)
+cd Dogs-and-Cats-CNN-API
+pip install -r requirements.txt
+
+```
+### 2. Run the API
+```bash
+gunicorn app.main:app --reload
+```
+The application will be available at `http://127.0.0.1:8000`.
+
+### 3. Make a Prediction (Example using `curl`)
+```bash
+curl -X POST -F "file=@/path/to/your/image.jpg" http://localhost:8000](http://127.0.0.1:8000/predict
+```
+------------------------------------------------------------------------------------------------------------
+
 # 🐶 Clasificador de Perros y Gatos con API en Flask 🐱
 
 ## 📝 Resumen del Proyecto
@@ -56,7 +103,7 @@ Para ejecutar la API y probar el modelo en un entorno de servidor:
 
 4.  **Haz una predicción (ejemplo con `curl`):**
     ```bash
-    curl -X POST -F "file=@/ruta/a/tu/imagen.jpg" [http://127.0.0.1:5000/predict](http://127.0.0.1:8000/predict)
+    curl -X POST -F "file=@/ruta/a/tu/imagen.jpg" [http://127.0.0.1:8000/predict](http://127.0.0.1:8000/predict)
     ```
 
 ## 📊 Resultados de la Evaluación
